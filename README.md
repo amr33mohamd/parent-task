@@ -48,7 +48,7 @@ DataProviderY has three status codes:
 
 
 
-## Implementation Details
+## Features 
 
 The Backend Application challenge has been implemented using PHP Laravel. The API endpoint `/api/v1/users` retrieves and filters data from DataProviderX and DataProviderY JSON files.
 
@@ -60,12 +60,13 @@ The implementation includes the following features:
 4. **Filtering by Amount Range:** The API supports filtering results by an amount range. For example, `/api/v1/users?balanceMin=10&balanceMax=100` returns users with balances between 10 and 100 (inclusive).
 5. **Filtering by Currency:** The API supports filtering results by currency.
 6. **Combined Filters:** The API can combine multiple filters together to narrow down the results.
-
+7. **Admin Panel:*** Controlling providers schema for admin users
+   
 ## Implementation Details
 
 The implementation of the Backend Application challenge 
 
-1. **Code Quality:** The code is well-designed, follows best practices, and adheres to Laravel conventions.
+1. **Code Quality:** The code is well-designed, follows best practices, solid principles , and adheres to Laravel conventions.
 2. **Application Performance:** The application efficiently handles the reading of large JSON files and performs filtering operations effectively.
 3. **Code Scalability:** The code is easily extensible to add new data providers (e.g., DataProviderZ) without significant modifications.
 4. **Unit Test Coverage:** The code has comprehensive unit tests that ensure its functionality and prevent regressions.
