@@ -26,6 +26,7 @@ class UserService
    
     public function importUsers($request)
     {
+
          // Define cache key based on request parameters
          $cacheKey = 'api_users_' . md5(serialize($request->query()));
          // Check if cached data is available
@@ -58,7 +59,7 @@ class UserService
     public function readAndParseJSONChunked($filePath, $provider,$request)
     {
         $users = [];
-
+        
         $handle = fopen($filePath->getRealPath(), 'r');
         $buffer = '';
         while (($line = fgets($handle)) !== false) {
@@ -66,14 +67,17 @@ class UserService
             
             if (strpos($buffer, '}') !== false) {
                 // Decode the JSON chunk
-              $buffer = str_replace('[','',$buffer);
-                $buffer = str_replace(']','',$buffer);
-              if(strpos($buffer, '},') !== false){
-                $chunk = json_decode(str_replace('},','}',$buffer), true);
-              }
-              else{
-                $chunk = json_decode($buffer, true);
-              }
+                    $buffer = str_replace('[','',$buffer);
+                    $buffer = str_replace(']','',$buffer);
+    
+                  if(strpos($buffer, '},') !== false){
+                    $chunk = json_decode(str_replace('},','}',$buffer), true);
+                  }
+                  else{
+                    $chunk = json_decode($buffer, true);
+                  }
+                
+
              if (!empty($chunk) ) {
                 $chunk = $this->unifyUserParamters($chunk,$provider);
                 if ($this->passesFilters($chunk, $request)) {
@@ -98,6 +102,7 @@ class UserService
             $user2['status'] = $user[$provider['status']] == $provider['authorised'] ? "authorised" : ($user[$provider['status']] == $provider['declined'] ? "decline" : "refunded");
             $user2['balance'] = $user[$provider['balance']];
             $user2['currency'] = $user[$provider['currency']];
+            $user2['id'] = $user[$provider['identification']];
             $user2['created_at'] = Carbon::createFromFormat($provider['created_at_format'], $user[$provider['created_at']])->format("Y-m-d");
             return $user2;
         }
@@ -108,7 +113,7 @@ class UserService
                 return false;
             }
     
-            if ($request->has('status') && $user['status'] !== $request->input('statusCode')) {
+            if ($request->has('status') && $user['status'] !== $request->input('status')) {
                 return false;
             }
     

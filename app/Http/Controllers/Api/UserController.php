@@ -27,6 +27,8 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
+        
+
         return $this->userService->importUsers($request);
             
     }
