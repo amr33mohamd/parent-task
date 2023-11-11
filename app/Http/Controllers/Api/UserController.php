@@ -29,7 +29,7 @@ class UserController extends Controller
     {
         
 
-        return $this->userService->importUsers($request);
+        return $this->userService->getUsers($request);
             
     }
 

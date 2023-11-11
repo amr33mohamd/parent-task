@@ -24,7 +24,7 @@ class UserService
     
 
    
-    public function importUsers($request)
+    public function getUsers($request)
     {
 
          // Define cache key based on request parameters
@@ -81,7 +81,6 @@ class UserService
              if (!empty($chunk) ) {
                 $chunk = $this->unifyUserParamters($chunk,$provider);
                 if ($this->passesFilters($chunk, $request)) {
-                 // Add 'provider' key to distinguish between providers                
                 $users[] = $chunk;
                 }
 
