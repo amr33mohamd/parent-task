@@ -7,7 +7,7 @@ use App\Models\Provider;
 use App\Repositories\ProviderRepository;
 
 
-class UserService
+class ProviderService
 {
     
     /**
