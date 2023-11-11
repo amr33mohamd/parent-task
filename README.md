@@ -72,25 +72,25 @@ The implementation of the Backend Application challenge
 5. **Docker:** The application is containerized using Docker for easy deployment and reproducibility.
 6. ### Admin Panel
 
-The application includes an admin panel accessible at `/admin` for dynamic control of providers.
+    The application includes an admin panel accessible at `/admin` for dynamic control of providers.
 
-- **Admin Credentials:**
-  - Username: `admin`
-  - Password: `admin`
+    - **Admin Credentials:**
+    - Username: `admin`
+    - Password: `admin`
 
-#### Available Actions
+    #### Available Actions
 
-1. **Add Provider:**
-   - Access the admin panel at `/admin`.
-   - Use the provided credentials to log in.
-   - Navigate to the "Providers" section.
-   - Add a new provider by providing necessary details such as `name`, `email`, `balance`, `status`, `currency`, `identification`, `authorized`, `declined`, `created_at`, and `created_at_format`.
+    1. **Add Provider:**
+    - Access the admin panel at `/admin`.
+    - Use the provided credentials to log in.
+    - Navigate to the "Providers" section.
+    - Add a new provider by providing necessary details such as `name`, `email`, `balance`, `status`, `currency`, `identification`, `authorized`, `declined`, `created_at`, and `created_at_format`.
 
-2. **Modify Provider:**
-   - Edit existing providers by selecting the desired provider in the admin panel.
+    2. **Modify Provider:**
+    - Edit existing providers by selecting the desired provider in the admin panel.
 
-3. **Remove Provider:**
-   - Remove a provider by selecting the delete option in the admin panel.
+    3. **Remove Provider:**
+    - Remove a provider by selecting the delete option in the admin panel.
 
 7. **Efficient Data Filtering with Chunking::** To ensure efficient processing of large files, the implementation utilizes chunking. Chunking breaks down the data into smaller, manageable portions, enabling filtering operations to be performed on smaller subsets of data at a time. This approach minimizes memory usage and prevents potential performance issues when dealing with large datasets. By employing chunking, the application can handle large files without compromising performance or encountering memory limitations.
 
