@@ -113,7 +113,7 @@ class UserService
                 return false;
             }
     
-            if ($request->has('status') && $user['status'] !== $request->input('status')) {
+            if ($request->has('statusCode') && $user['status'] !== $request->input('statusCode')) {
                 return false;
             }
     

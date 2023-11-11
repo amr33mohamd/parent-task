@@ -1,66 +1,111 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Backend Application Readme
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+This readme file provides an overview of the Backend Application challenge and outlines the implementation details and evaluation criteria.
 
-## About Laravel
+## Challenge Idea
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+The main objective of the Backend Application challenge is to create an API endpoint that retrieves and filters data from two data providers, namely DataProviderX and DataProviderY. The data is stored in JSON files and requires filter operations to obtain the desired results.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Here are the schemas for DataProviderX and DataProviderY:
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+**DataProviderX schema:**
 
-## Learning Laravel
+```json
+{
+  "parentAmount": 200,
+  "Currency": "USD",
+  "parentEmail": "parent1@parent.eu",
+  "statusCode": 1,
+  "registerationDate": "2018-11-30",
+  "parentIdentification": "d3d29d70-1d25-11e3-8591-034165a3a613"
+}
+```
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+DataProviderX has three status codes:
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+- `1`: authorized
+- `2`: declined
+- `3`: refunded
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+**DataProviderY schema:**
 
-## Laravel Sponsors
+```json
+{
+  "balance": 300,
+  "currency": "AED",
+  "email": "parent2@parent.eu",
+  "status": 100,
+  "created_at": "22/12/2018",
+  "id": "4fc2-a8d1"
+}
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+DataProviderY has three status codes:
 
-### Premium Partners
+- `100`: authorized
+- `200`: declined
+- `300`: refunded
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
 
-## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## Implementation Details
 
-## Code of Conduct
+The Backend Application challenge has been implemented using PHP Laravel. The API endpoint `/api/v1/users` retrieves and filters data from DataProviderX and DataProviderY JSON files.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+The implementation includes the following features:
 
-## Security Vulnerabilities
+1. **Listing Users:** The API endpoint lists all users by combining transactions from DataProviderX and DataProviderY.
+2. **Filtering by Provider:** The API supports filtering results by payment providers. For example, `/api/v1/users?provider=DataProviderX` returns users from DataProviderX.
+3. **Filtering by Status Code:** The API supports filtering results by status code (authorized, declined, refunded). For example, `/api/v1/users?statusCode=authorized` returns users with the status code "authorized."
+4. **Filtering by Amount Range:** The API supports filtering results by an amount range. For example, `/api/v1/users?balanceMin=10&balanceMax=100` returns users with balances between 10 and 100 (inclusive).
+5. **Filtering by Currency:** The API supports filtering results by currency.
+6. **Combined Filters:** The API can combine multiple filters together to narrow down the results.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## Implementation Details
 
-## License
+The implementation of the Backend Application challenge :
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+1. **Code Quality:** The code is well-designed, follows best practices, and adheres to Laravel conventions.
+2. **Application Performance:** The application efficiently handles the reading of large JSON files and performs filtering operations effectively.
+3. **Code Scalability:** The code is easily extensible to add new data providers (e.g., DataProviderZ) without significant modifications.
+4. **Unit Test Coverage:** The code has comprehensive unit tests that ensure its functionality and prevent regressions.
+5. **Docker:** The application is containerized using Docker for easy deployment and reproducibility.
+6. **Adding Providers Dynamically::**  The API supports adding new providers dynamically by using the /api/providers endpoint. This endpoint accepts data parameters such as name, email, balance, status, currency, identification, authorized, declined, created_at, and created_at_format. These parameters define the structure and meaning of the data for each provider, allowing seamless integration of new sources without extensive code modifications.
+
+7. **Efficient Data Filtering with Chunking::** To ensure efficient processing of large files, the implementation utilizes chunking. Chunking breaks down the data into smaller, manageable portions, enabling filtering operations to be performed on smaller subsets of data at a time. This approach minimizes memory usage and prevents potential performance issues when dealing with large datasets. By employing chunking, the application can handle large files without compromising performance or encountering memory limitations.
+
+8. **Caching for Improved Performance::**  Caching is implemented to enhance performance and reduce server load. When a request is made, the system checks if the same request has been made within the last 60 minutes. If so, the response is retrieved from the cache and returned without reprocessing the request. This significantly reduces the load on the server and improves response times for frequently requested data. By utilizing caching, the system provides faster responses and optimizes resource utilization, resulting in an improved user experience.
+
+9. **Repository Service Pattern:::** The implementation follows the Repository Service Pattern, which separates the data access logic from the business logic. The repository acts as an intermediary between the application and the data providers, encapsulating the data access operations. The service layer handles the business logic and utilizes the repositories to retrieve and process the data. This pattern promotes code modularity, testability, and maintainability by separating concerns and providing a clear separation of responsibilities.
+
+## Getting Started
+
+To run the Backend Application, follow these steps:
+
+1. Clone the repository.
+2. Install the required dependencies by running `composer install`.
+3. Set up your database credentials in the `.env` file.
+4. Migrate the database using `php artisan migrate`.
+5. Start the server by running `php artisan serve`.
+6. The application will be accessible at `http://localhost:8000`.
+
+## Testing
+
+To run the unit tests for the Backend Application, use the command `php artisan test`. The tests ensure the functionality of the API endpoint and validate the implemented filters.
+
+## Docker
+
+The application has been containerized using Docker for easy deployment and reproducibility. To run the application using Docker, follow these steps:
+
+1. Install Docker on your machine.
+2. Build the Docker image by running `docker build -t backend-application .` in the project directory.
+3. Run the Docker container using `docker run -p 8000:8000 backend-application`.
+4. The application will be accessible at `http://localhost:8000`.
+
+## Conclusion
+
+The Backend Application challenge demonstrates your skills in building an API endpoint that retrieves and filters data from multiple sources. The implementation meets the acceptance criteria and includes features such as listing users, filtering by provider, status code, amount range, currency, and combining multiple filters.
+
+The code follows best practices, performs efficiently, and is easily scalable to accommodate additional data providers. It is thoroughly tested, ensuring its functionality and preventing regressions. The application is containerized using Docker for seamless deployment and reproducibility.
+
+If you have any further questions or need clarification, please feel free to ask. Good luck with your implementation and delivery of the Backend Application!
