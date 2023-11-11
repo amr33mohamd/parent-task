@@ -124,8 +124,8 @@ The application has been containerized using Docker for easy deployment and repr
 
 ## Conclusion
 
-The Backend Application challenge demonstrates your skills in building an API endpoint that retrieves and filters data from multiple sources. The implementation meets the acceptance criteria and includes features such as listing users, filtering by provider, status code, amount range, currency, and combining multiple filters.
+The Backend Application challenge demonstrates my skills in building an API endpoint that retrieves and filters data from multiple sources. The implementation meets the acceptance criteria and includes features such as listing users, filtering by provider, status code, amount range, currency, and combining multiple filters.
 
 The code follows best practices, performs efficiently, and is easily scalable to accommodate additional data providers. It is thoroughly tested, ensuring its functionality and preventing regressions. The application is containerized using Docker for seamless deployment and reproducibility.
 
-If you have any further questions or need clarification, please feel free to ask. Good luck with your implementation and delivery of the Backend Application!
+If you have any further questions or need clarification, please feel free to ask. 
