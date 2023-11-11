@@ -63,14 +63,34 @@ The implementation includes the following features:
 
 ## Implementation Details
 
-The implementation of the Backend Application challenge :
+The implementation of the Backend Application challenge 
 
 1. **Code Quality:** The code is well-designed, follows best practices, and adheres to Laravel conventions.
 2. **Application Performance:** The application efficiently handles the reading of large JSON files and performs filtering operations effectively.
 3. **Code Scalability:** The code is easily extensible to add new data providers (e.g., DataProviderZ) without significant modifications.
 4. **Unit Test Coverage:** The code has comprehensive unit tests that ensure its functionality and prevent regressions.
 5. **Docker:** The application is containerized using Docker for easy deployment and reproducibility.
-6. **Adding Providers Dynamically::**  The API supports adding new providers dynamically by using the /api/providers endpoint. This endpoint accepts data parameters such as name, email, balance, status, currency, identification, authorized, declined, created_at, and created_at_format. These parameters define the structure and meaning of the data for each provider, allowing seamless integration of new sources without extensive code modifications.
+6. ### Admin Panel
+
+The application includes an admin panel accessible at `/admin` for dynamic control of providers.
+
+- **Admin Credentials:**
+  - Username: `admin`
+  - Password: `admin`
+
+#### Available Actions
+
+1. **Add Provider:**
+   - Access the admin panel at `/admin`.
+   - Use the provided credentials to log in.
+   - Navigate to the "Providers" section.
+   - Add a new provider by providing necessary details such as `name`, `email`, `balance`, `status`, `currency`, `identification`, `authorized`, `declined`, `created_at`, and `created_at_format`.
+
+2. **Modify Provider:**
+   - Edit existing providers by selecting the desired provider in the admin panel.
+
+3. **Remove Provider:**
+   - Remove a provider by selecting the delete option in the admin panel.
 
 7. **Efficient Data Filtering with Chunking::** To ensure efficient processing of large files, the implementation utilizes chunking. Chunking breaks down the data into smaller, manageable portions, enabling filtering operations to be performed on smaller subsets of data at a time. This approach minimizes memory usage and prevents potential performance issues when dealing with large datasets. By employing chunking, the application can handle large files without compromising performance or encountering memory limitations.
 

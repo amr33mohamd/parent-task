@@ -30,9 +30,9 @@ class UserService
          // Define cache key based on request parameters
          $cacheKey = 'api_users_' . md5(serialize($request->query()));
          // Check if cached data is available
-         if (Cache::has($cacheKey)) {
-             return response()->json(Cache::get($cacheKey));
-         }
+        //  if (Cache::has($cacheKey)) {
+        //      return response()->json(Cache::get($cacheKey));
+        //  }
         $data = [];
         foreach($request->all() as $key =>$file){
             if($this->providerRepository->getPrividerByName($key)){
@@ -50,10 +50,9 @@ class UserService
          $perPage = $request->input('per_page', 10);
  
          $paginatedData = $usersCollection->forPage($page, $perPage);
- 
          // Cache the filtered data for future requests
          Cache::put($cacheKey, $paginatedData, now()->addMinutes(60)); // Cache for 60 minutes
-         return response()->json($paginatedData);
+         return $paginatedData;
 
     }
     public function readAndParseJSONChunked($filePath, $provider,$request)
